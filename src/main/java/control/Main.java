@@ -3,6 +3,7 @@ package control;
 import model.Book;
 import model.BookType;
 import model.Client;
+import model.NoStockException;
 import model.BooksList;
 
 public class Main {
@@ -22,10 +23,16 @@ public class Main {
 		BooksList joao = new BooksList(joaoSilva);
 		BooksList maria = new BooksList(mariaSantos);
 		
-		joao.ownBook(pqnPrin);
-		joao.ownBook(artGuerra);
 		
-		maria.ownBook(artGuerra);
+		try {
+			joao.ownBook(pqnPrin);
+			joao.ownBook(artGuerra);
+			
+			maria.ownBook(artGuerra);
+			maria.ownBook(pqnPrin);
+		}catch(NoStockException e) {
+			System.out.println(e);
+		}
 		
 		joao.ownedBook();
 		maria.ownedBook();
@@ -34,7 +41,7 @@ public class Main {
 		
 		joao.giveBackBook(pqnPrin);
 		maria.giveBackBook(artGuerra);
-		
+	
 		joao.ownedBook();
 		maria.ownedBook();
 	}

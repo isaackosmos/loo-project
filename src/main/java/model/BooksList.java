@@ -16,9 +16,13 @@ public class BooksList {
 //		this.bookIterator = clientList.iterator();
 	}
 
-	public void ownBook(Book book) {
-		clientList.add(book);
-		book.setQuantity(book.getQuantity() - 1);
+	public void ownBook(Book book) throws NoStockException{
+		if(book.getQuantity() < 1)
+			throw new NoStockException("Sem estoque.");
+		else { 
+			clientList.add(book);
+			book.setQuantity(book.getQuantity() - 1);
+		}
 	}
 
 	public void giveBackBook(Book book) {

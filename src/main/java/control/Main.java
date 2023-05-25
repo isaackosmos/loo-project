@@ -6,11 +6,14 @@ import model.Client;
 import model.NoStockException;
 import model.BooksList;
 
-public class Main {
-
+public class Main extends Thread {
 	
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {		
+		Main thread = new Main();
+		thread.start();	
+	}
+	
+	public void run() {
 		Client joaoSilva = new Client("Joao da Silva", "101.987.675.04");
 		Client mariaSantos = new Client("Maria dos Santos", "115.765.453.10");
 		
@@ -34,6 +37,8 @@ public class Main {
 			System.out.println(e);
 		}
 		
+		System.out.println("-----");
+		
 		joao.ownedBook();
 		maria.ownedBook();
 		
@@ -42,6 +47,8 @@ public class Main {
 		joao.giveBackBook(pqnPrin);
 		maria.giveBackBook(artGuerra);
 	
+		System.out.println("-----");
+		
 		joao.ownedBook();
 		maria.ownedBook();
 	}

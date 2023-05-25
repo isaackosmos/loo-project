@@ -1,26 +1,41 @@
 package control;
 
-import dao.EmployeeDao;
+import model.Book;
+import model.BookType;
 import model.Client;
-import model.Employee;
-import model.GiveBackBook;
-import model.OwnBook;
-import model.RomanceBook;
-import model.Service;
-import view.FrameBase;
+import model.BooksList;
 
 public class Main {
 
 	
 	public static void main(String[] args) {
 		
-		Client client = new Client("Joao da Silva");
-		RomanceBook book = new RomanceBook("O Pequeno Principe");
+		Client joaoSilva = new Client("Joao da Silva", "101.987.675.04");
+		Client mariaSantos = new Client("Maria dos Santos", "115.765.453.10");
 		
-		OwnBook own = new OwnBook(client, book);
-		own.doService();
+		Book pqnPrin = new Book("O Pequeno Principe", 1);
+		pqnPrin.setType(BookType.ROMANCE);
+		Book artGuerra = new Book("A Arte da Guerra", 2);
+		artGuerra.setType(BookType.TEXT);
 		
-		GiveBackBook give = new GiveBackBook(client, book);
-		give.doService();
+		
+		BooksList joao = new BooksList(joaoSilva);
+		BooksList maria = new BooksList(mariaSantos);
+		
+		joao.ownBook(pqnPrin);
+		joao.ownBook(artGuerra);
+		
+		maria.ownBook(artGuerra);
+		
+		joao.ownedBook();
+		maria.ownedBook();
+		
+		System.out.println("-----");
+		
+		joao.giveBackBook(pqnPrin);
+		maria.giveBackBook(artGuerra);
+		
+		joao.ownedBook();
+		maria.ownedBook();
 	}
 }

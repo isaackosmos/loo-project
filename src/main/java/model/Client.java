@@ -1,5 +1,6 @@
 package model;
 
+
 public class Client {
 
 	private String name;
@@ -8,6 +9,7 @@ public class Client {
 	public Client(String name, String cpf) {
 		this.setName(name);
 		this.setCpf(cpf);
+		
 	}
 
 	public String getCpf() {

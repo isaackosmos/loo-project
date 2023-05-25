@@ -8,7 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import model.Employee;
+import model.Book;
+import model.BooksList;
+import model.Client;
 
 
 
@@ -20,7 +22,7 @@ public class HibernateUtil {
 			try {
 				Configuration configuration = new Configuration();
 				
-				// equivalente ao hibernate.cfg.xml
+//				 equivalente ao hibernate.cfg.xml
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
 				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/loo20231");
@@ -34,8 +36,10 @@ public class HibernateUtil {
 				
 				configuration.setProperties(settings);
 				
-				// aqui cadastro as classes que serão persistidas
-				configuration.addAnnotatedClass(Employee.class);
+//				 aqui cadastro as classes que serão persistidas
+				configuration.addAnnotatedClass(Book.class);
+				configuration.addAnnotatedClass(Client.class);
+				configuration.addAnnotatedClass(BooksList.class);
 			
 				
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

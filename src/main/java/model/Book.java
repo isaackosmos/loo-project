@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Book {
+public class Book {
 
 	private String name;
 	private int quantity;
@@ -23,7 +23,7 @@ public abstract class Book {
 		return quantity;
 	}
 
-	private void setQuantity(int quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
